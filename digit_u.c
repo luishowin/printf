@@ -28,7 +28,7 @@ int hexa_append(char ascii_code, char buffer[], int i)
     if (ascii_code < 0)
         ascii_code *= -1;
 
-    buffer[i++] = '\\'
+    buffer[i++] = '\\';
     buffer[i++] = 'x';
 
     buffer[i++] = map_to[ascii_code / 16];
@@ -59,5 +59,26 @@ int digit_verify(char c)
 */
 long int num_convert(long int num, int size)
 {
-    
+    if (size == S_LONG)
+        return (num);
+    else if (size == S_SHORT)
+        return ((short)num);
+
+    return ((int)num);
+}
+
+/**
+ * unisg_convert = casts a number to the specified size
+ * @num: num to be casted
+ * 
+ * return: casted value of num
+*/
+long int unsig_convert(unsigned long int num, int size)
+{
+    if (size == S_LONG)
+        return (num);
+    else if (size == S_SHORT)
+        return ((unsigned short)num);
+
+    return ((unsigned int)num);
 }
